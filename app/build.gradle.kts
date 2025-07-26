@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.implementation
+import org.gradle.kotlin.dsl.testImplementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -89,4 +92,10 @@ dependencies {
 
     // ktor
     implementation(libs.bundles.ktor)
+
+    implementation(libs.accompanist.swiperefresh)
+
+    testImplementation (libs.kotlinx.coroutines.test)
+
+
 }
