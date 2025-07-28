@@ -1,10 +1,7 @@
 package com.pratiksha.admin.rojgarihub
 
-import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.pratiksha.rojgarihub.MainActivity
 import com.pratiksha.rojgarihub.presentation.auth.UserType
@@ -14,16 +11,16 @@ import com.pratiksha.rojgarihub.presentation.auth.login.LoginState
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.*
 
 @RunWith(AndroidJUnit4::class)
 class LoginScreenTest {
 
     @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>() // or any launcher activity
+    val composeRule = createAndroidComposeRule<MainActivity>()
 
     @Test
-    fun test_login_ui_components_and_input() {
-        // Set content
+    fun test_login_ui_components_and_input_are_displayed() {
         composeRule.setContent {
             LoginScreen(
                 state = LoginState(),
@@ -31,20 +28,15 @@ class LoginScreenTest {
             )
         }
 
-        // Check presence of radio buttons
         composeRule.onNodeWithText("Employer").assertIsDisplayed()
         composeRule.onNodeWithText("Job Seeker").assertIsDisplayed()
-
-        // Check email and password fields
         composeRule.onNodeWithText("Email Address").assertIsDisplayed()
         composeRule.onNodeWithText("Password").assertIsDisplayed()
-
-        // Check login button
         composeRule.onNodeWithText("Login").assertIsDisplayed()
     }
 
     @Test
-    fun test_input_and_role_selection() {
+    fun test_user_can_enter_credentials_and_select_job_seeker() {
         var loginAs: UserType? = null
         var email = ""
         var password = ""
@@ -63,18 +55,18 @@ class LoginScreenTest {
             )
         }
 
-        // Interact with email field
-        composeRule.onNodeWithText("Email Address").performTextInput("cow@gmail.com")
+        // Enter text into email and password
+        composeRule.onNodeWithText("Email Address").performTextInput("me@gmail.com")
         composeRule.onNodeWithText("Password").performTextInput("123456")
 
-        // Select Job Seeker
+        // Select Job Seeker radio
         composeRule.onNodeWithText("Job Seeker").performClick()
 
-        // Assert values updated
+        // Assert state changes
         composeRule.runOnIdle {
-            assert(email == "cow@gmail.com")
-            assert(password == "123456")
-            assert(loginAs == UserType.JOB_SEEKER)
+            assertEquals("me@gmail.com", email)
+            assertEquals("123456", password)
+            assertEquals(UserType.JOB_SEEKER, loginAs)
         }
     }
 }

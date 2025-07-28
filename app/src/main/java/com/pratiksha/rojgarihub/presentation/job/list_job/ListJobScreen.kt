@@ -83,7 +83,7 @@ fun JobListScreenRoot(
 }
 
 @Composable
-private fun JobListScreen(
+fun JobListScreen(
     state: ListJobState,
     onAction: (ListJobAction) -> Unit
 ) {
