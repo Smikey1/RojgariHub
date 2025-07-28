@@ -41,5 +41,8 @@
     <string name="open_menu">Open Menu</string>
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
+    <string name="no_jobs_available">Either no jobs available at the moment</string>
     <string name="empty_jobs">You haven\'t posted any jobs,\nlet’s create job now!</string>
+    <string name="empty_save_jobs">You haven\'t saved any jobs,\nlet’s save job now!</string>
+    <string name="my_saved_jobs">Saved Jobs</string>
 </resources>

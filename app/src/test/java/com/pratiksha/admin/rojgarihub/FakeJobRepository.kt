@@ -20,7 +20,7 @@ class FakeJobRepository : JobRepository {
         shouldFail = value
     }
 
-    override suspend fun fetchJobs(): Result<List<Job>, DataError> {
+    override suspend fun fetchAllEmployerJobs(): Result<List<Job>, DataError> {
         return if (shouldFail) {
             Result.Error(DataError.Network.UNKNOWN)
         } else {

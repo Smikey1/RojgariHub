@@ -33,7 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pratiksha.rojgarihub.presentation.job.list_job.utils.DropdownItem
+import com.pratiksha.rojgarihub.presentation.job.utils.DropdownItem
 import kotlin.collections.forEachIndexed
 import kotlin.collections.isNotEmpty
 import com.pratiksha.rojgarihub.R
@@ -105,7 +105,8 @@ fun JobTopAppBar(
                             ) {
                                 Icon(
                                     imageVector = item.icon,
-                                    contentDescription = item.title
+                                    contentDescription = item.title,
+                                    modifier = Modifier.size(20.dp)
                                 )
                                 Spacer(modifier = Modifier.width(16.dp))
                                 Text(
